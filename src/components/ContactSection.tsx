@@ -29,8 +29,8 @@ export const ContactSection = () => {
                   <Phone className="mr-4 flex-shrink-0" />
                   <div>
                     <h4 className="font-semibold mb-1">Phone</h4>
-                    <p>+1 (555) 123-4567</p>
-                    <p>+1 (555) 987-6543</p>
+                    <p>+1 (212) 555-7890</p>
+                    <p>+1 (646) 555-4321</p>
                   </div>
                 </div>
                 
@@ -38,7 +38,7 @@ export const ContactSection = () => {
                   <Mail className="mr-4 flex-shrink-0" />
                   <div>
                     <h4 className="font-semibold mb-1">Email</h4>
-                    <p>info@expresslogistics.com</p>
+                    <p>xpresslogisticsinc@outlook.com</p>
                     <p>support@expresslogistics.com</p>
                   </div>
                 </div>
@@ -47,9 +47,9 @@ export const ContactSection = () => {
                   <MapPin className="mr-4 flex-shrink-0" />
                   <div>
                     <h4 className="font-semibold mb-1">Office Address</h4>
-                    <p>123 Logistics Way,</p>
-                    <p>Business District,</p>
-                    <p>New York, NY 10001</p>
+                    <p>350 Fifth Avenue, Suite 4200,</p>
+                    <p>Empire State Building,</p>
+                    <p>New York, NY 10118</p>
                   </div>
                 </div>
               </div>

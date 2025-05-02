@@ -1,11 +1,17 @@
 
 import React from 'react';
 import { Facebook, Twitter, Linkedin, Instagram } from 'lucide-react';
+import { TrackingForm } from './TrackingForm';
 
 export const Footer = () => {
   return (
     <footer className="bg-logistics-darkGray text-white">
       <div className="container mx-auto px-4 pt-16 pb-8">
+        <div className="mb-12 bg-logistics-blue p-8 rounded-lg shadow-lg">
+          <h3 className="text-2xl font-bold mb-6 text-center">Track Your Shipment</h3>
+          <TrackingForm />
+        </div>
+        
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 mb-12">
           <div>
             <h3 className="text-2xl font-bold mb-6">Express<span className="text-logistics-green">Logistics</span></h3>
