@@ -11,15 +11,16 @@ import { CTA } from '@/components/CTA';
 import { Footer } from '@/components/Footer';
 import { useAnimateOnScroll } from '@/hooks/useAnimateOnScroll';
 import { initEmailJS } from '@/utils/emailService';
+import { Toaster } from '@/components/ui/toaster';
 
 const Index = () => {
   // Initialize scroll animation
   useAnimateOnScroll();
   
-  // Initialize simple email service
- React.useEffect(() => {
-  initEmailJS("service_v89u66k");
-}, []);
+  // Initialize EmailJS with the correct service ID
+  React.useEffect(() => {
+    initEmailJS('service_v89u66');
+  }, []);
 
   return (
     <div className="flex flex-col min-h-screen">
@@ -32,6 +33,7 @@ const Index = () => {
       <CTA />
       <ContactSection />
       <Footer />
+      <Toaster />
     </div>
   );
 };

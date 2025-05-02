@@ -1,5 +1,18 @@
 
-// Simple email service without EmailJS
+import emailjs from 'emailjs-com';
+
+// EmailJS configuration
+const SERVICE_ID = 'service_v89u66';
+const TEMPLATE_ID = 'template_hx41bww';
+const PUBLIC_KEY = '4stgrvYQShib7y_5g';
+
+// Initialize EmailJS
+export const initEmailJS = (serviceId: string) => {
+  emailjs.init(PUBLIC_KEY);
+  console.log("EmailJS initialized with service:", serviceId);
+};
+
+// Send contact form email
 export const sendEmail = async (data: {
   name: string;
   email: string;
@@ -7,28 +20,26 @@ export const sendEmail = async (data: {
   message: string;
 }) => {
   try {
-    // In a real app, this would connect to a backend API
-    // For now, we'll simulate a successful response
-    
-    // Create email content that would be sent
-    const emailContent = {
-      to: "xpresslogisticsinc@outlook.com",
-      from: data.email,
-      subject: `Contact Request from ${data.name}`,
-      body: `
-        Name: ${data.name}
-        Email: ${data.email}
-        Phone: ${data.phone}
-        
-        Message:
-        ${data.message}
-      `
+    // Format the data for EmailJS template
+    const templateParams = {
+      from_name: data.name,
+      from_email: data.email,
+      phone: data.phone,
+      message: data.message,
+      to_email: 'xpresslogisticsinc@outlook.com'
     };
     
-    console.log("Sending email with content:", emailContent);
+    console.log("Sending email with EmailJS:", templateParams);
     
-    // Simulate successful API call with a small delay
-    await new Promise(resolve => setTimeout(resolve, 500));
+    // Send the email using EmailJS
+    const response = await emailjs.send(
+      SERVICE_ID,
+      TEMPLATE_ID,
+      templateParams,
+      PUBLIC_KEY
+    );
+    
+    console.log("Email sent successfully:", response);
     
     return {
       success: true,
@@ -43,30 +54,29 @@ export const sendEmail = async (data: {
   }
 };
 
-// Track shipment service
+// Track shipment request with EmailJS
 export const sendTrackingRequest = async (trackingNumber: string, email: string) => {
   try {
-    // In a real app, this would connect to a backend API
-    // For now, we'll simulate a successful response
-    
-    // Create email content that would be sent
-    const emailContent = {
-      to: "xpresslogisticsinc@outlook.com",
-      from: email,
-      subject: `Tracking Request for ${trackingNumber}`,
-      body: `
-        Tracking Number: ${trackingNumber}
-        Customer Email: ${email}
-        
-        This customer has requested tracking information for the above shipment.
-        Please send tracking details to the customer's email address.
-      `
+    // Format the data for EmailJS template
+    const templateParams = {
+      from_name: 'Tracking Request',
+      from_email: email,
+      message: `Tracking request for shipment number: ${trackingNumber}`,
+      tracking_number: trackingNumber,
+      to_email: 'xpresslogisticsinc@outlook.com'
     };
     
-    console.log("Sending tracking request email with content:", emailContent);
+    console.log("Sending tracking request with EmailJS:", templateParams);
     
-    // Simulate successful API call with a small delay
-    await new Promise(resolve => setTimeout(resolve, 500));
+    // Send the email using EmailJS
+    const response = await emailjs.send(
+      SERVICE_ID,
+      TEMPLATE_ID,
+      templateParams,
+      PUBLIC_KEY
+    );
+    
+    console.log("Tracking request sent successfully:", response);
     
     return {
       success: true,
@@ -79,9 +89,4 @@ export const sendTrackingRequest = async (trackingNumber: string, email: string)
       message: "Failed to process tracking request. Please try again later."
     };
   }
-};
-
-// No need to initialize EmailJS anymore
-export const initEmailJS = (_userID: string) => {
-  console.log("Email service ready");
 };
