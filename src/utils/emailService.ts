@@ -35,8 +35,7 @@ export const sendEmail = async (data: {
     const response = await emailjs.send(
       SERVICE_ID,
       TEMPLATE_ID,
-      templateParams,
-      PUBLIC_KEY
+      templateParams
     );
     
     console.log("Email sent successfully:", response);
@@ -72,8 +71,7 @@ export const sendTrackingRequest = async (trackingNumber: string, email: string)
     const response = await emailjs.send(
       SERVICE_ID,
       TEMPLATE_ID,
-      templateParams,
-      PUBLIC_KEY
+      templateParams
     );
     
     console.log("Tracking request sent successfully:", response);

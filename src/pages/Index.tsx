@@ -17,9 +17,10 @@ const Index = () => {
   // Initialize scroll animation
   useAnimateOnScroll();
   
-  // Initialize EmailJS with the correct service ID
+  // Initialize EmailJS with the exact service ID
   React.useEffect(() => {
-    initEmailJS('service_v89u66');
+    // Initialize with PUBLIC_KEY only, no need to pass service ID
+    initEmailJS('4stgrvYQShib7y_5g');
   }, []);
 
   return (
