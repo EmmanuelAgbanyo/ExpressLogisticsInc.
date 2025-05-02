@@ -17,9 +17,9 @@ const Index = () => {
   useAnimateOnScroll();
   
   // Initialize simple email service
-  React.useEffect(() => {
-    initEmailJS("");
-  }, []);
+ React.useEffect(() => {
+  initEmailJS("service_v89u66k");
+}, []);
 
   return (
     <div className="flex flex-col min-h-screen">
