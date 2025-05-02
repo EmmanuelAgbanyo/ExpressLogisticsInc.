@@ -47,9 +47,9 @@ export const ContactSection = () => {
                   <MapPin className="mr-4 flex-shrink-0" />
                   <div>
                     <h4 className="font-semibold mb-1">Office Address</h4>
-                    <p>1 World Trade Center, 285 Fulton St,</p>
-                    <p>Suite 8500,</p>
-                    <p>New York, NY 10007</p>
+                    <p>425 Park Avenue,</p>
+                    <p>Floor 22,</p>
+                    <p>New York, NY 10022</p>
                   </div>
                 </div>
               </div>

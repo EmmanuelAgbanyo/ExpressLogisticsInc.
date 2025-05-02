@@ -9,7 +9,26 @@ export const sendEmail = async (data: {
   try {
     // In a real app, this would connect to a backend API
     // For now, we'll simulate a successful response
-    console.log("Email would be sent to xpresslogisticsinc@outlook.com with:", data);
+    
+    // Create email content that would be sent
+    const emailContent = {
+      to: "xpresslogisticsinc@outlook.com",
+      from: data.email,
+      subject: `Contact Request from ${data.name}`,
+      body: `
+        Name: ${data.name}
+        Email: ${data.email}
+        Phone: ${data.phone}
+        
+        Message:
+        ${data.message}
+      `
+    };
+    
+    console.log("Sending email with content:", emailContent);
+    
+    // Simulate successful API call with a small delay
+    await new Promise(resolve => setTimeout(resolve, 500));
     
     return {
       success: true,
@@ -29,10 +48,25 @@ export const sendTrackingRequest = async (trackingNumber: string, email: string)
   try {
     // In a real app, this would connect to a backend API
     // For now, we'll simulate a successful response
-    console.log("Tracking request would be sent to xpresslogisticsinc@outlook.com with:", {
-      trackingNumber,
-      email
-    });
+    
+    // Create email content that would be sent
+    const emailContent = {
+      to: "xpresslogisticsinc@outlook.com",
+      from: email,
+      subject: `Tracking Request for ${trackingNumber}`,
+      body: `
+        Tracking Number: ${trackingNumber}
+        Customer Email: ${email}
+        
+        This customer has requested tracking information for the above shipment.
+        Please send tracking details to the customer's email address.
+      `
+    };
+    
+    console.log("Sending tracking request email with content:", emailContent);
+    
+    // Simulate successful API call with a small delay
+    await new Promise(resolve => setTimeout(resolve, 500));
     
     return {
       success: true,
