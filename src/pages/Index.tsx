@@ -17,7 +17,7 @@ const Index = () => {
   // Initialize scroll animation
   useAnimateOnScroll();
   
-  // Initialize email service
+  // Initialize direct SMTP email service
   React.useEffect(() => {
     initEmailService();
   }, []);
