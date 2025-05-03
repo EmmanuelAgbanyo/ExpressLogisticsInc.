@@ -10,17 +10,16 @@ import { ContactSection } from '@/components/ContactSection';
 import { CTA } from '@/components/CTA';
 import { Footer } from '@/components/Footer';
 import { useAnimateOnScroll } from '@/hooks/useAnimateOnScroll';
-import { initEmailJS } from '@/utils/emailService';
+import { initEmailService } from '@/utils/emailService';
 import { Toaster } from '@/components/ui/toaster';
 
 const Index = () => {
   // Initialize scroll animation
   useAnimateOnScroll();
   
-  // Initialize EmailJS with the exact service ID
+  // Initialize email service
   React.useEffect(() => {
-    // Initialize with PUBLIC_KEY only, no need to pass service ID
-    initEmailJS('4stgrvYQShib7y_5g');
+    initEmailService();
   }, []);
 
   return (

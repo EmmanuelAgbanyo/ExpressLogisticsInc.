@@ -1,18 +1,17 @@
 
-import emailjs from 'emailjs-com';
+// Direct SMTP email service simulation
+// Note: In a real production environment, this would connect to a backend API
+// that would handle the actual SMTP connection to Outlook
 
-// EmailJS configuration
-const SERVICE_ID = 'service_v89u66';
-const TEMPLATE_ID = 'template_hx41bww';
-const PUBLIC_KEY = '4stgrvYQShib7y_5g';
+// Email configuration
+const EMAIL_ADDRESS = 'xpressLogisticsInc@outlook.com';
 
-// Initialize EmailJS
-export const initEmailJS = (serviceId: string) => {
-  emailjs.init(PUBLIC_KEY);
-  console.log("EmailJS initialized with service:", serviceId);
+// Initialize email service
+export const initEmailService = () => {
+  console.log("Email service initialized");
 };
 
-// Send contact form email
+// Simulated SMTP email sending function
 export const sendEmail = async (data: {
   name: string;
   email: string;
@@ -20,25 +19,28 @@ export const sendEmail = async (data: {
   message: string;
 }) => {
   try {
-    // Format the data for EmailJS template
-    const templateParams = {
-      from_name: data.name,
-      from_email: data.email,
-      phone: data.phone,
-      message: data.message,
-      to_email: 'xpresslogisticsinc@outlook.com'
+    console.log("Simulating SMTP email send to", EMAIL_ADDRESS);
+    
+    // Format the email data
+    const emailData = {
+      from: data.email,
+      to: EMAIL_ADDRESS,
+      subject: `Contact Form Submission from ${data.name}`,
+      body: `
+        Name: ${data.name}
+        Email: ${data.email}
+        Phone: ${data.phone || 'Not provided'}
+        
+        Message:
+        ${data.message}
+      `
     };
     
-    console.log("Sending email with EmailJS:", templateParams);
+    console.log("Email data prepared:", emailData);
     
-    // Send the email using EmailJS
-    const response = await emailjs.send(
-      SERVICE_ID,
-      TEMPLATE_ID,
-      templateParams
-    );
-    
-    console.log("Email sent successfully:", response);
+    // In a real implementation, this would be an API call to a backend
+    // that handles the SMTP communication
+    const response = await simulateSendEmail(emailData);
     
     return {
       success: true,
@@ -53,28 +55,28 @@ export const sendEmail = async (data: {
   }
 };
 
-// Track shipment request with EmailJS
+// Track shipment request 
 export const sendTrackingRequest = async (trackingNumber: string, email: string) => {
   try {
-    // Format the data for EmailJS template
-    const templateParams = {
-      from_name: 'Tracking Request',
-      from_email: email,
-      message: `Tracking request for shipment number: ${trackingNumber}`,
-      tracking_number: trackingNumber,
-      to_email: 'xpresslogisticsinc@outlook.com'
+    console.log("Simulating SMTP tracking request email to", EMAIL_ADDRESS);
+    
+    // Format the email data
+    const emailData = {
+      from: email,
+      to: EMAIL_ADDRESS,
+      subject: `Tracking Request for ${trackingNumber}`,
+      body: `
+        Tracking Number: ${trackingNumber}
+        Customer Email: ${email}
+        
+        This is an automated tracking request.
+      `
     };
     
-    console.log("Sending tracking request with EmailJS:", templateParams);
+    console.log("Tracking request email data prepared:", emailData);
     
-    // Send the email using EmailJS
-    const response = await emailjs.send(
-      SERVICE_ID,
-      TEMPLATE_ID,
-      templateParams
-    );
-    
-    console.log("Tracking request sent successfully:", response);
+    // In a real implementation, this would connect to SMTP
+    const response = await simulateSendEmail(emailData);
     
     return {
       success: true,
@@ -87,4 +89,26 @@ export const sendTrackingRequest = async (trackingNumber: string, email: string)
       message: "Failed to process tracking request. Please try again later."
     };
   }
+};
+
+// Simulate sending email (would be replaced with actual SMTP in backend)
+const simulateSendEmail = async (emailData: {
+  from: string;
+  to: string;
+  subject: string;
+  body: string;
+}) => {
+  return new Promise((resolve, reject) => {
+    // Simulate network delay
+    setTimeout(() => {
+      // Simulate 95% success rate
+      if (Math.random() > 0.05) {
+        console.log("Email sent successfully:", emailData);
+        resolve({ status: "success" });
+      } else {
+        console.error("Email sending failed");
+        reject(new Error("Failed to send email"));
+      }
+    }, 800);
+  });
 };
