@@ -24,16 +24,6 @@ export const ContactSection = () => {
             <div className="bg-logistics-blue text-white p-8 rounded-lg shadow-md h-full">
               <h3 className="text-2xl font-semibold mb-6">Contact Information</h3>
               
-              <div className="space-y-8">
-                <div className="flex items-start">
-                  <Phone className="mr-4 flex-shrink-0" />
-                  <div>
-                    <h4 className="font-semibold mb-1">Phone</h4>
-                    <p>+1 (212) 555-7890</p>
-                    <p>+1 (646) 555-4321</p>
-                  </div>
-                </div>
-                
                 <div className="flex items-start">
                   <Mail className="mr-4 flex-shrink-0" />
                   <div>
