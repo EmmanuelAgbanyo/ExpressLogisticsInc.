@@ -33,6 +33,13 @@ export const ContactSection = () => {
                   <p>support@expresslogistics.com</p>
                 </div>
               </div>
+               <div className="flex items-start mb-6">
+                  <Phone className="mr-4 flex-shrink-0" />
+                <div>
+                  <h4 className="font-semibold mb-1">Phone</h4>
+                  <p>(937) 807-2193</p>
+                 </div>
+                </div>
 
               <div className="flex items-start mb-6">
                 <MapPin className="mr-4 flex-shrink-0" />
